@@ -58,9 +58,9 @@ service:
   type: ClusterIP
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
-  host: chart-example.local
+  host:dynamolocal.ads-qa.vungle.com
 
   tls: []
   #  - secretName: chart-example-tls
