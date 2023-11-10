@@ -48,7 +48,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.dynamodb.image.repository }}:{{ .Values.dynamodb.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.dynamodb.image.pullPolicy }}
-          args: [ "-Djava.library.path=./DynamoDBLocal_lib", "-jar", "DynamoDBLocal.jar", "-inMemory"]
+          args: [ "-Djava.library.path=./DynamoDBLocal_lib", "-jar", "DynamoDBLocal.jar",  "-dbPath", "./data"]
           ports:
             - name: dynamodb
               containerPort: 8000
@@ -67,7 +67,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: dynamodb-data
-              mountPath: /mnt/data
+              mountPath: ./data
         - name: admin
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
