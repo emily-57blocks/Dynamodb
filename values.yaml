@@ -58,7 +58,7 @@ service:
   type: ClusterIP
 
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
   host: dynamolocal.ads-qa.vungle.com
 
